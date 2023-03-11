@@ -1,0 +1,131 @@
+{
+    "timestamp": "2023-02-16T14:21:52.4639926+00:00",
+    "result": {
+        "choiceForItem": [{
+            "itemId": "1390312743",
+            "choiceSections": [{
+                "id": 702633844,
+                "iid": 1390312743,
+                "nm": "choose your salad",
+                "mnq": 1,
+                "mxq": 4,
+                "awm": true,
+                "sortOrder": 0,
+                "st": "Choose min-of 1 & max-of 4",
+                "ich": [{
+                        "id": 1390312992,
+                        "nm": "Green salad m",
+                        "pr": 0,
+                        "opr": -1,
+                        "ids": false,
+                        "ds": false,
+                        "hsc": false,
+                        "price": 10
+                    },
+                    {
+                        "id": 1390312993,
+                        "nm": "yogurt salad m",
+                        "pr": 0,
+                        "opr": -1,
+                        "ids": false,
+                        "ds": false,
+                        "hsc": false,
+                        "price": 15
+                    },
+                    {
+                        "id": 1390312994,
+                        "nm": "pickled eggplant m",
+                        "pr": 0,
+                        "opr": -1,
+                        "ids": false,
+                        "ds": false,
+                        "hsc": false,
+                        "price": 5
+                    },
+                    {
+                        "id": 1390312995,
+                        "nm": "Pickle Option m",
+                        "pr": 0,
+                        "opr": -1,
+                        "ids": false,
+                        "ds": false,
+                        "hsc": false,
+                        "price": 20
+                    },
+                    {
+                        "id": 1390312996,
+                        "nm": "torshy m",
+                        "pr": 0,
+                        "opr": -1,
+                        "ids": false,
+                        "ds": false,
+                        "hsc": false,
+                        "price": 10
+                    },
+                    {
+                        "id": 1390312997,
+                        "nm": "pickled tomatoes m",
+                        "pr": 0,
+                        "opr": -1,
+                        "ids": false,
+                        "ds": false,
+                        "hsc": false,
+                        "price": 0
+                    },
+                    {
+                        "id": 1390312998,
+                        "nm": "transh salad m",
+                        "pr": 0,
+                        "opr": -1,
+                        "ids": false,
+                        "ds": false,
+                        "hsc": false,
+                        "price": 40
+                    },
+                    {
+                        "id": 1390312999,
+                        "nm": "tome salad m",
+                        "pr": 2.28,
+                        "opr": -1,
+                        "ids": false,
+                        "ds": false,
+                        "hsc": false,
+                        "price": 25
+                    },
+                    {
+                        "id": 1390313000,
+                        "nm": "tahini salad m",
+                        "pr": 0,
+                        "opr": -1,
+                        "ids": false,
+                        "ds": false,
+                        "hsc": false,
+                        "price": 20
+
+                    },
+                    {
+                        "id": 1390313001,
+                        "nm": "Chickpeas Salad m",
+                        "pr": 2.28,
+                        "opr": -1,
+                        "ids": false,
+                        "ds": false,
+                        "hsc": false,
+                        "price": 30
+                    },
+                    {
+                        "id": 1390313003,
+                        "nm": "Harissa salad m",
+                        "pr": 2.28,
+                        "opr": -1,
+                        "ids": false,
+                        "ds": false,
+                        "hsc": false,
+                        "price": 30
+                    }
+                ]
+            }]
+        }]
+    },
+    "baseUrl": "https://images.deliveryhero.io/image/talabat/"
+}

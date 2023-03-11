@@ -1,0 +1,13 @@
+[{
+    "item": [{
+        "name": "Serve Basmati With Khalta And Nuts",
+        "price": 325,
+        "image": "https://images.deliveryhero.io/image/talabat/Menuitems/A23765EE3E4E735398729CBD1BB7CC47?width=172&amp;height=172",
+        "hasChoices": true,
+        "sectionName": "Assorted Food",
+        "choices": [{
+            "nm": "Baba Ghanoush salad m",
+            "State": true
+        }]
+    }]
+}]

@@ -1,0 +1,47 @@
+ion-img {
+    border-radius: 10%;
+}
+
+.imgs {
+    border-radius: 10%;
+}
+
+ion-item {
+    --padding-start: 0;
+}
+
+
+/* iOS places the subtitle above the title */
+
+ion-card-header.ios {
+    display: flex;
+    flex-flow: column-reverse;
+}
+
+ion-thumbnail {
+    width: 141px;
+    height: 141px;
+}
+
+ion-button.price {
+    padding-top: 5px;
+    border-radius: 33%;
+}
+
+@media (max-width: 768px) {
+    ion-thumbnail {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.scroll {
+    flex-wrap: nowrap;
+    overflow-x: scroll !important;
+    width: auto;
+    overflow-y: hidden;
+}
+
+ion-col {
+    padding: 2px;
+}

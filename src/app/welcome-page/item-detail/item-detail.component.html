@@ -1,0 +1,160 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="Back"></ion-back-button>
+        </ion-buttons>
+        <h1 style="text-align: center; align-items: center">Details</h1>
+    </ion-toolbar>
+</ion-header>
+<!-- <ion-card>
+        <img alt="Silhouette of mountains" src="{{ProductDetail?.image}}" />
+        <ion-card-header>
+            <ion-card-title>{{ProductDetail?.name}}</ion-card-title>
+
+            <ion-card-subtitle>{{ProductDetail?.originalSection}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+            Here's a small text description for the card content. Nothing more, nothing less.
+        </ion-card-content>
+         <ion-button expand="inset">
+            <ion-icon name="add"></ion-icon>
+        </ion-button>
+    </ion-card> -->
+<ion-content>
+    <!-- <ion-card style="text-align: center; align-items: center; justify-content: center" width="auto">
+       // <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />{{ProductDetail?.image}}
+    <img alt="Silhouette of mountains" src="{{ ProductDetail?.originalImage }}" style="
+        padding: 10px;
+        height: 400px;
+        width: 100%;
+        box-shadow: 0px 2px 11px 13px;
+" />
+
+    <ion-card-header style="text-align: center; align-items: center; justify-content: center">
+        <ion-card-title>
+            <h1>Name : {{ ProductDetail?.name }}</h1>
+        </ion-card-title>
+        <ion-card-subtitle>
+            <h3>Category : {{ ProductDetail?.originalSection }}</h3>
+        </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content style="text-align: center; align-items: center; justify-content: center">
+        <ion-label>
+            <ion-button expand="inset" color="primary" shape="round">
+                EGP {{ ProductDetail?.price }}
+            </ion-button>
+        </ion-label>
+        <ion-item *ngIf="ProductDetail?.hasChoices">
+            <ion-item *ngFor="let item of hasChoices">
+                <ion-checkbox slot="end"></ion-checkbox>
+                <ion-label>{{ item.nm }}</ion-label>
+            </ion-item>
+        </ion-item>
+        <br />
+
+        <ion-label>
+            <h1>Quantity</h1>
+            <ion-button expand="inset" color="danger" (click)="mins()">
+                <ion-icon name="remove-outline"></ion-icon>
+            </ion-button>
+            <label (ngModel)="(quantityHtml)">{{ quantityHtml }}</label>
+            <ion-button expand="inset" color="success" (click)="plus()">
+                <ion-icon name="add"></ion-icon>
+            </ion-button>
+        </ion-label>
+        <br />
+        <ion-label>
+            <ion-button expand="inset" color="secondary" shape="round" (click)="SendItem()">
+                Add To Cart
+            </ion-button>
+        </ion-label>
+    </ion-card-content>
+    </ion-card> -->
+    <ion-card ion-padding>
+        <div class="card-wrapper">
+            <div class="card">
+                <!-- card left -->
+                <div class="product-imgs">
+                    <div class="img-display">
+                        <div class="img-showcase">
+                            <img src="{{ ProductDetail?.originalImage }}" alt="image" />
+                        </div>
+                    </div>
+                </div>
+                <!-- card right -->
+                <div class="product-content">
+                    <h2 class="product-title">{{ ProductDetail?.name }}</h2>
+                    <ion-item>
+                        <ion-label slot="end" color="tertiary">
+                            <h1>EGP {{ ProductDetail?.price }}</h1>
+                        </ion-label>
+                        <ion-label slot="start">
+                            <h1>Regular</h1>
+                        </ion-label>
+                    </ion-item>
+                    <modal (TotalPrice)="TotalPriceChoices($event)"></modal>
+                    <!-- <a href=" #" class="product-link" routerLinkActive="/welcome/{{ ProductDetail?.originalSection }}">{{ ProductDetail?.originalSection }}</a
+          > -->
+                    <!-- <div style="float: right">
+            <span style="font-weight: bold" color="secondary"> Quantity :</span>
+            <input
+              type="number"
+              min="1"
+              value="{{ quantityHtml }}"
+              width="8"
+              (ngModel)="(quantityHtml)"
+            />
+          </div> -->
+                    <div style="text-align: center; padding: 10px">
+                        <div padding>
+                            <ion-label style="font-size: 2em">
+                                <ion-button shape="round" size="large" expand="inset" color="danger" (click)="mins()" disabled="{{ disable }}" style="padding: 4px">
+                                    <ion-icon name="remove-outline"></ion-icon>
+                                </ion-button>
+                                <label (ngModel)="(quantityHtml)" style="padding: 4px">{{
+                  quantityHtml
+                }}</label>
+                                <ion-button shape="round" size="large" expand=" inset" color="success" (click)="plus()" style="padding: 4px">
+                                    <ion-icon name="add"></ion-icon>
+                                </ion-button>
+                            </ion-label>
+                        </div>
+                    </div>
+                    <!-- <div class="product-price>
+                        <p class="last-price>
+              Old Price:
+              <span>EGP {{ (ProductDetail?.price * 1.1).toFixed(1) }}</span>
+            </p>
+            <p class=" new-price>
+                            New Price: <span>EGP {{ ProductDetail?.price }}</span>
+                        </p>
+                </div> -->
+                    <!-- <div class="product-detail>
+            <h2>about this item:</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
+              eveniet veniam tempora fuga tenetur placeat sapiente architecto
+              illum soluta consequuntur, aspernatur quidem at sequi ipsa!
+            </p>
+            <ul>
+              <li>Available: <span>Yes</span></li>
+              <li>
+                Category: <span>{{ ProductDetail?.originalSection }}</span>
+              </li>
+              <li>Shipping Fee: <span>Free</span></li>
+            </ul>
+          </div> -->
+                    <div class="purchase-info">
+                        <ion-item color="danger" style="font-size: x-large;">
+                            <ion-label slot="start" expand="full" color="light" (click)="SendItem()">
+                                Add to Cart</ion-label>
+                            <ion-label slot="end" color="light">EGP {{ (ProductDetail?.price * quantityHtml )+TotalPriceCh}}</ion-label>
+                        </ion-item>
+                    </div>
+                    <!-- <modal></modal> -->
+                </div>
+            </div>
+        </div>
+    </ion-card>
+</ion-content>

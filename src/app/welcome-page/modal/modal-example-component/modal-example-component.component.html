@@ -1,0 +1,42 @@
+<!-- <ion-header>
+    <ion-toolbar>
+        <ion-title> Choices </ion-title>
+        <ion-buttons slot="end">
+            <ion-button color="medium"(click)="cancel()">
+                <ion-icon name="exit"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding"> -->
+<!-- <ion-item *ngFor="let item of hasChoicesModel">
+    <ion-checkbox slot="end"></ion-checkbox>
+    <ion-label>{{ item.nm }}</ion-label>
+</ion-item>
+<ion-button expand="block"(click)="alertsModel()"> Add To Cart </ion-button> -->
+<!-- <ion-item *ngFor="let item of hasChoicesModel">
+    <ion-checkbox slot="end"></ion-checkbox>
+    <ion-label>{{ item.nm }}</ion-label>
+</ion-item> -->
+<ion-accordion-group>
+    <ion-accordion value="first">
+        <ion-item slot="header" color="light">
+            <ion-label>Add-On </ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content" *ngFor="let item of hasChoicesModel">
+            <ion-item>
+                <ion-checkbox slot="start" (ionChange)="checkBox(item.price, $event)"></ion-checkbox>
+                <ion-text slot="start">{{ item.nm }}</ion-text>
+                <ion-text slot="end">EGP {{ item.price }}</ion-text>
+            </ion-item>
+        </div>
+    </ion-accordion>
+</ion-accordion-group>
+<!-- <ion-item>
+    <ion-label>Add-On</ion-label>
+    <ion-select placeholder="Select"[multiple]="true">
+        <ion-select-option value="{{item.nm}}"*ngFor="let item of hasChoicesModel">{{ item.nm }}</ion-select-option>
+    </ion-select>
+    <ion-button expand="block"(click)="alertsModel()"> Add To Cart </ion-button>
+</ion-item> -->
+<!-- </ion-content> -->

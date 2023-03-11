@@ -1,0 +1,182 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="Back"></ion-back-button>
+        </ion-buttons>
+        <ion-title style="text-align: center; font-weight: bold">Cart</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content>
+  <h1>Shopping Cart</h1>
+
+        <div class="shopping-cart" *ngFor="let item of CartItems">
+            <div class="column-labels">
+                <label class="product-image">Image</label>
+                <label class="product-details">Product</label>
+                <label class="product-price">Price</label>
+                <label class="product-quantity">Quantity</label>
+                <label class="product-removal">Remove</label>
+                <label class="product-line-price">Total</label>
+            </div>
+
+            <div class="product">
+                <div class="product-image">
+                    <img src="{{ CartItems.image }}" />
+                </div>
+                <div class="product-details">
+                    <div class="product-title">{{ CartItems.name }}</div>
+                    <div class="product-title">{{ CartItems.sectionName }}</div>
+
+                    <p class="product-description">
+                        The best dog bones of all time. Holy craitem. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.
+                    </p>
+                </div>
+                <div class="product-price">{{ CartItems.price }}</div>
+                <div class="product-quantity">
+                    <input type="number" value="2" [(ngModel)]="CartItems.quntity" min="1" />
+                </div>
+                <div class="product-removal">
+                    <button class="remove-product">Remove</button>
+                </div>
+                <div class="product-line-price">
+                    {{ CartItems.price * CartItems.quntity }}
+                </div>
+            </div>
+            <button class="checkout">Checkout</button>
+        </div>
+</ion-content>
+-->
+
+<!--  <ion-content>
+ <div class="Cart-Container">
+        <div class="Header">
+            <h3 class="Heading">Shopping Cart</h3>
+            <h5 class="Action">Remove all</h5>
+        </div>
+        <div class="Cart-Items" *ngFor="let item of CartItems">
+            <div class="image-box">
+                <img src="{{ item.Image }}" style="height: 120px" />
+            </div>
+            <div class="about">
+                <h1 class="title">{{ item.name }}</h1>
+                <h3 class="subtitle">{{ item.sectionName }}</h3>
+                <div class="counter">{{ item.quntity }}</div>
+                <div class="prices">{{ item.price }}</div>
+            </div>
+            <div class="counter">
+                <div class="btn">+</div>
+                <div class="count" (ngModel)="(item.quntity)">2</div>
+                <div class="btn">-</div>
+            </div>
+            <div class="prices">
+                <div class="amount">$2.99</div>
+                <div class="save"><u>Save for later</u></div>
+                <div class="remove"><u>Remove</u></div>
+            </div>
+            <hr />
+        </div>
+        <div class="checkout">
+            <div class="total">
+                <div>
+                    <div class="Subtotal">Sub-Total</div>
+                    <div class="items">{{ CartItems?.length }} items</div>
+                </div>
+                <div class="total-amount">$6.18</div>
+            </div>
+            <button class="button">Checkout</button>
+        </div>
+    </div> -->
+
+<!-- <ion-card>
+        <ion-button style="float: right" color="dark" (click)="RemoveAll()">
+            Remove all
+        </ion-button>
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    <ion-thumbnail slot="start">
+                        <img alt="Image" />
+                    </ion-thumbnail>
+                    <ion-label>Name</ion-label>
+                    <ion-icon></ion-icon>
+                </ion-item>
+            </ion-list>
+            <ion-list>
+                <ion-item *ngFor="let item of CartItems; let index = index">
+                    <ion-thumbnail slot="start">
+                        <img alt="Silhouette of mountains" src="{{ item.Image }}" />
+                    </ion-thumbnail>
+                    <ion-label slot="start">{{ item.name }}</ion-label>
+                    <ion-label slot="start">{{ item.sectionName }}</ion-label>
+                    <ion-label slot="start">{{ item.price }}</ion-label>
+                    <ion-label slot="start">
+                        <ion-label>
+                            <ion-button (click)="mins(index)" size="small" slot="start">
+                                -
+                            </ion-button>
+                            <label>{{ item.quantity }}</label>
+                            <ion-button (click)="plus(index)" size="small"> + </ion-button>
+                        </ion-label>
+                    </ion-label>
+                    <label>{{ TotalPrice }}</label>
+                    <ion-icon slot="end" name="trash" color="danger" (click)="deleteItem(index)"></ion-icon>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card> -->
+<!-- </ion-content>
+</ion-content> -->
+
+<ion-content ion-padding>
+    <div class="Cart-Container">
+        <h1>Shopping Cart</h1>
+        <div class="shopping-cart">
+            <div class="column-labels">
+                <label class="product-image">Image</label>
+                <label class="product-details">Product</label>
+                <label class="product-price">Price</label>
+                <label class="product-quantity">Quantity</label>
+                <label class="product-removal">Remove</label>
+                <label class="product-line-price">Total</label>
+            </div>
+            <div class="product" *ngFor="let item of CartItems; let index = index">
+                <div class="product-image">
+                    <img src="{{ item.Image }}" />
+                </div>
+                <div class="product-details">
+                    <div class="product-title">{{ item.name }}</div>
+                </div>
+                <div class="product-price">{{ item.price }}</div>
+                <div class="product-quantity">
+                    <input type="number" value="2" min="1" #qun ngModel="{{ item.quantity }}" (change)="changeQuantity(index, qun)" />
+                </div>
+                <div class="product-removal">
+                    <button class="remove-product" (click)="deleteItem(index)">
+            Remove
+          </button>
+                </div>
+                <div class="product-line-price">{{ item.quantity * item.price}}</div>
+            </div>
+            <div class="totals" *ngIf="CartItems.length > 0">
+                <div class="totals-item">
+                    <label>Subtotal</label>
+                    <div class="totals-value" id="cart-subtotal ">{{ TotalPrice.toFixed(2) }}</div>
+                </div>
+                <div class="totals-item">
+                    <label>Tax (5%)</label>
+                    <div class="totals-value" id="cart-tax ">{{ (TotalPrice*.05).toFixed(2) }}</div>
+                </div>
+                <div class="totals-item">
+                    <label>Shipping</label>
+                    <div class="totals-value" id="cart-shipping ">{{ (TotalPrice*.01).toFixed(2) }}</div>
+                </div>
+                <button class="checkout">Checkout</button>
+            </div>
+            <div class="totals" *ngIf="CartItems.length <= 0">
+                <h1>Cart is Empty</h1>
+            </div>
+        </div>
+
+    </div>
+</ion-content>

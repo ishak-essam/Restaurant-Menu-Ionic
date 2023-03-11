@@ -1,0 +1,302 @@
+<!-- <ion-header>
+    <ion-toolbar>
+        <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
+            <ion-slide *ngFor="let it of category" style="
+          width: auto;
+          color: white;
+          height: auto;
+          border: 2px solid #f8f8f8;
+          max-width: 100px;
+        ">
+                <ion-col>
+                    <div style="display: flex">
+                       routerLink="welcome/{{ it.name }}"
+<div class="content">
+    <a href="#{{ it.name }}"><img src="{{ it.items[0].originalImage }}" alt="" /></a>
+</div>
+</div>
+</ion-col>
+</ion-slide>
+</ion-slides>
+</ion-toolbar>
+</ion-header> -->
+
+<ion-segment scrollable value="Form1" [(ngModel)]="SelectSegment" style="justify-content: center; height: 70px" (ionChange)="SelectSegmentChanged($event)">
+    <ion-segment-button value="Form1">
+        <ion-label>Items</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Form2">
+        <ion-label>Categrioes</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Form3">
+        <ion-label>Collections</ion-label>
+    </ion-segment-button>
+</ion-segment>
+<ion-card scrollable>
+    <div class="Form1" scrollable *ngIf="SelectSegment === 'Form1'">
+        <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
+            <!-- <ion-slide>
+            <ion-col>
+                <ion-label (click)="CatCho('All')"> All</ion-label>
+            </ion-col>
+        </ion-slide> -->
+            <ion-slide style="
+          width: auto;
+          color: white;
+          height: auto;
+          border: 2px solid #f8f8f8;
+        ">
+                <ion-col>
+                    <ion-button (click)="GetCatgroy('all')" shape="round">
+                        All</ion-button>
+                </ion-col>
+            </ion-slide>
+            <ion-slide *ngFor="let it of category" style="
+          width: auto;
+          color: white;
+          height: auto;
+          border: 2px solid #f8f8f8;
+        ">
+                <ion-col>
+                    <ion-button (click)="GetCatgroy(it.name)" shape="round">
+                        {{ it.name }}</ion-button>
+                </ion-col>
+            </ion-slide>
+        </ion-slides>
+
+        <ion-card-content>
+            <ion-list>
+                <ion-item *ngFor="let it of item" routerLink="welcome/{{ it.originalSection }}/{{ it.id }}">
+                    <ion-thumbnail slot="end" *ngIf="it.isWithImage">
+                        <img alt="new Item" src="{{ it.originalImage }}" />
+                    </ion-thumbnail>
+                    <ion-label>
+                        <h1>{{ it.name }}</h1>
+                        <br />
+                        <ion-button expand="inset" shape="round">
+                            EGP {{ it.price }}
+                        </ion-button>
+                        <p>{{ it.hasChoices }}</p>
+                        <ion-button expand="inset" *ngIf="it.hasChoices" color="secondary" shape="round" (click)="openModal()">
+                            <ion-icon name="add"></ion-icon>
+                        </ion-button>
+                        <ion-button expand="inset" *ngIf="!it.hasChoices" color="secondary" shape="round" (click)="
+                SendItem(it.name, it.price, it.hasChoices, it.originalSection)
+              ">
+                            <ion-icon name="add"></ion-icon>
+                        </ion-button>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </div>
+    <div class="Form2" scrollable *ngIf="SelectSegment === 'Form2'">
+        <ion-card-header>
+            <ion-card-title>Items </ion-card-title>
+            <ion-card-subtitle>Categrioes</ion-card-subtitle>
+        </ion-card-header>
+
+        <!-- <ion-slide>
+            <ion-col>
+                <ion-button (click)="GetCatgroy('all')" shape="round" routerLink="welcome/all">
+                    All</ion-button>
+            </ion-col>
+        </ion-slide>
+        <ion-slide style="display: grid; grid-template-columns: 1fr 1fr">
+            <div *ngFor="let it of category">
+                <ion-thumbnail>
+                    <div style="display: flex">
+                        <img alt="new Item" src="{{ it.items[0].originalImage }}" slot="end" />
+                        <ion-label style="text-align: center; align-items: center;" routerLink="welcome/{{ it.name }} " slot="start">
+                            {{ it.name }}</ion-label>
+                    </div>
+                </ion-thumbnail>
+            </div>
+        </ion-slide> -->
+        <!--
+
+        <ion-card color="primary" *ngFor="let it of category">
+            <ion-card-header>
+                <ion-card-title> {{ it.name }}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                <img alt="new Item" src="{{ it.items[0].originalImage }}" slot="end" />
+            </ion-card-content>
+        </ion-card> -->
+
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title>Categories</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <!-- <ion-list style="display: grid;">
+                    <ion-item *ngFor="let it of category" routerLink="welcome/{{ it.name }}">
+                        <ion-thumbnail slot="start">
+                            <img alt="Silhouette of mountains" src="{{ it.items[0].originalImage }}" />
+                        </ion-thumbnail>
+                        <ion-label>{{ it.name }}</ion-label>
+                    </ion-item>
+                </ion-list> -->
+                <div style="justify-content: center">
+                    <div class="content" style="
+              justify-content: left;
+              text-align: center;
+              align-items: center;
+            " (click)="GetCatgroy('all')" shape="round" routerLink="welcome/all">
+                        <img src="../../../../assets/Images/Logo.PNG" alt="All" />
+                        <div class="text">
+                            <h1>All</h1>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr">
+                    <div class="content" *ngFor="let it of category" routerLink="welcome/{{ it.name }}">
+                        <img src="{{ it.items[0].originalImage }}" alt="" />
+                        <div class="text">
+                            <h2>{{ it.name }}</h2>
+                        </div>
+                    </div>
+                </div>
+            </ion-card-content>
+        </ion-card>
+    </div>
+
+    <div class="Form1" scrollable *ngIf="SelectSegment === 'Form3'">
+        <!-- <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
+         <ion-slide>
+        <ion-col>
+            <ion-label (click)="CatCho('All')"> All</ion-label>
+        </ion-col>
+    </ion-slide> -->
+        <!-- <ion-slide style="
+          width: auto;
+          color: white;
+          height: auto;
+          border: 2px solid #f8f8f8;
+        ">
+                <ion-col>
+                    <ion-button (click)="GetCatgroy('all')" shape="round">
+                        All</ion-button>
+                </ion-col>
+            </ion-slide>
+        <ion-slide *ngFor="let it of category" style="
+          width: auto;
+          color: white;
+          height: auto;
+          border: 2px solid #f8f8f8;
+        ">
+            <ion-col>
+                <ion-button (click)="GetCatgroy(it.name)" shape="round">
+
+                    <a href="#{{ it.name }}">{{ it.name }}</a></ion-button>
+            </ion-col>
+        </ion-slide>
+        </ion-slides>
+        <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
+            <ion-slide *ngFor="let it of category" style="
+          width: auto;
+          color: white;
+          height: auto;
+          border: 2px solid #f8f8f8;
+        ">
+                <ion-col>
+                    <div style="display: flex">
+                         routerLink="welcome/{{ it.name }}"
+        <div class="content" *ngFor="let it of category">
+            <a href="#{{ it.name }}"><img src="{{ it.items[0].originalImage }}" alt="" /></a>
+        </div>
+    </div>
+    </ion-col>
+    </ion-slide>
+    </ion-slides>
+    -->
+
+        <ion-card-content>
+            <div>
+                <div scrollable *ngFor="let it of category" class="w-full flex flex-col items-center relative text-6xl md:my-6 mb-12 font-normal text-center text-primary-main uppercase">
+                    <div class="font-secondary mb-2" style="font-size: unset" id="{{ it.name }}">
+                        {{ it.name }}
+                    </div>
+                    <div>
+                        <div class="flex justify-center items-center flex-wrap px-2 md:px-4 gap-x-12 md:gap-y-16 font-main text-2xl font-bold mx-auto">
+                            <div class="product-card max-w-full w-72 md:w-80 hover:-translate-y-2 ease-in-out duration-1000 cursor-pointer flex flex-col" *ngFor="let itdata of it.items" (click)="Nag(itdata.originalSection, itdata.id)">
+                                <div class="w-44 h-44 relative group flex justify-center flex-grow overflow-hidden top-10">
+                                    <div class="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;">
+                                        <div class="box-sizing: border-box; display: block; max-width: 100%;">
+                                            <img alt="" aria-hidden="true" src="{{ itdata.originalImage }}" style="
+                          max-width: 100%;
+                          max-width: 132px;
+                          display: block;
+                          margin: 0px;
+                          border: none;
+                          padding: 0px;
+                        " />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col bg-secondary-gray-100 max-w-xs rounded-t-xl p-4 md:px-6 min-h-[150px] max-h-[150px]">
+                                    <p class="text-primary-gray font-bold uppercase text-start text-lg pt-3 md:pt-6">
+                                        {{ itdata.name }}
+                                    </p>
+                                </div>
+                                <div class="flex justify-between items-center max-w-xs bg-secondary-gray-100 rounded-b-xl px-4 pt-4 pb-2 md:pb-4 text-base">
+                                    <p class="text-primary-gray font-bold lg:ml-4">
+                                        EGP {{ itdata.price }}
+                                    </p>
+                                    <div class="bg-primary-main rounded-full flex justify-center items-center">
+                                        <ion-icon name=" add " size="large " color="primary "></ion-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--
+            <ion-list>
+                <ion-item *ngFor="let it of item " routerLink="welcome/{{ it.originalSection }}/{{ it.id }} ">
+                    (click)=" Move() " routerLink="item " -
+                    <ion-thumbnail slot="end " *ngIf="it.isWithImage ">
+                        <img alt="new Item " src="{{ it.originalImage }} " />
+                    </ion-thumbnail>
+                    <ion-label>
+                        <h1>{{ it.name }}</h1>
+                        <br />
+                        <ion-button expand="inset " shape="round ">
+                            EGP {{ it.price }}
+                        </ion-button>
+                        <p>{{ it.hasChoices }}</p>
+                        <ion-button expand="inset " *ngIf="it.hasChoices" color="secondary " shape="round " (click)="openModal() ">
+                            <ion-icon name="add "></ion-icon>
+                        </ion-button>
+                        <ion-button expand="inset " *ngIf="!it.hasChoices " color="secondary " shape="round " (click)=" SendItem(it.name, it.price, it.hasChoices, it.originalSection) ">
+                            <ion-icon name="add "></ion-icon>
+                        </ion-button>
+                    </ion-label>
+                </ion-item>
+            </ion-list>-->
+        </ion-card-content>
+    </div>
+</ion-card>
+
+<!--
+    <ion-segment scrollable value="Form1 " [(ngModel)]="SelectSegment " (ionChange)="SelectSegmentChanged($event) ">
+        <ion-segment-button value="Form1 ">
+            <ion-label>Form1</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Form2 ">
+            <ion-label>Form2</ion-label>
+        </ion-segment-button>
+
+    </ion-segment>
+    <div class="ion-padding ">
+        <div class="center ">
+            <div class="Form1 " *ngIf="SelectSegment==='Form1' ">
+
+            </div>
+            <div class="Form2 " *ngIf="SelectSegment==='Form2' ">
+
+            </div>
+            <div class="Cell " *ngIf="SelectSegment==='Cell' ">Cell will be loaded</div>
+        </div>    </div> -->

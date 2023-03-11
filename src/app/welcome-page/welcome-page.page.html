@@ -1,0 +1,95 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-icon class="ion-padding b-gray" name="person" slot="start"></ion-icon>
+        <ion-title style="text-align: center; font-weight: bold">
+            <img src="{{srcImg}}" expand="full" alt="" /></ion-title>
+        <ion-icon class="ion-padding b-gray" name="search-outline" slot="end"></ion-icon>
+    </ion-toolbar>
+
+    <ion-toolbar>
+        <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }" style="width: 100%">
+            <ion-slide *ngFor="let it of category" style="
+          width: auto;
+          color: white;
+          height: auto;
+          border: 2px solid #f8f8f8;
+          max-width: auto;
+">
+                <ion-col>
+                    <div style="display: flex">
+                        <div class="content">
+                            <a href="#{{ it.name }}">
+                                <!-- <div class="img__wrap">
+                                    <img src="{{ it.items[0].originalImage }}" alt="" />
+                                    <p class="img__description">{{ it.name }}</p>
+                                </div> -->
+                                <!-- <div class="containerB">
+                                    <img src="{{ it.items[0].originalImage }}" alt="Snow" style="width:100%;">
+                                    <div class="bottom-left">{{ it.name }} </div>
+                                </div> -->
+                                <div class="content_img">
+                                    <img src="{{ it.items[0].originalImage }}" width='100%' height='100%'>
+                                    <div>{{ it.name }}</div>
+                                </div>
+
+                                <!-- <div class="content_img">
+                                    <img src="{{ it.items[0].originalImage }}" style="width: 100%;height:100%">
+                                    <div>{{ it.name }}</div>
+                                </div> -->
+                            </a>
+                        </div>
+                    </div>
+                </ion-col>
+            </ion-slide>
+        </ion-slides>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!-- <app-header></app-header> -->
+    <!--
+    <ion-segment scrollable value="Chats" [(ngModel)]="SelectSegment" expand="full" fullscreen (ionChange)="SelectSegmentChanged($event)">
+        <ion-segment-button value="Delivery">
+            <ion-label>Delivery</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Pickup">
+            <ion-label>Pickup</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+
+    <div class="ion-padding">
+        <div class="center">
+            <div class="Chats" *ngIf="SelectSegment==='Delivery'">Delivery</div>
+            <div class="Status" *ngIf="SelectSegment==='Pickup'">
+                Loading
+                <ion-spinner name="lines"> </ion-spinner>
+            </div>
+        </div>
+    </div>
+
+    <app-item></app-item>
+</ion-content>
+ // footer
+<ion-footer>
+    <ion-toolbar>
+        <ion-title style="text-align: center; font-weight: bold">Kansas</ion-title>
+    </ion-toolbar>
+</ion-footer> -->
+    <!-- footer -->
+    <app-item></app-item>
+    <!-- <ion-item>
+        <ion-avatar>
+            <ion-skeleton-text animated>
+                <h2></h2>
+            </ion-skeleton-text>
+            <ion-label>
+                <h2>
+                    <ion-skeleton-text style="width: 50%"> eaxc </ion-skeleton-text>
+                </h2>
+                <p>
+                    <ion-skeleton-text style="width: 50%"> eaxc </ion-skeleton-text>
+                </p>
+            </ion-label>
+        </ion-avatar>
+    </ion-item> -->
+</ion-content>
